@@ -1,0 +1,120 @@
+.container {
+  border: 5px solid #214b5e;
+  border-radius: 20px;
+  background-color: #e3f4fc;
+}
+
+.searchBar {
+  padding: 20px 0 20px 0;
+  display: inline-block;
+  width: 80%;
+}
+
+.insertCity {
+  width: 50%;
+  padding: 5px;
+  border: solid 3px #949494;
+  border-radius: 5px;
+}
+
+.searchButton {
+  width: 80px;
+  padding: 5px;
+  color: aliceblue;
+  font-weight: bold;
+  background-color: #00549e;
+  border: solid 3px #0000a9;
+  border-radius: 5px;
+  transition: all 200ms ease-in-out;
+}
+
+.searchButton:hover {
+  background-color: aliceblue;
+  color: #00549e;
+}
+
+.currentButton {
+  width: 80px;
+  padding: 5px;
+  color: aliceblue;
+  font-weight: bold;
+  background-color: #00549e;
+  border: solid 3px #0000a9;
+  border-radius: 5px;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.currentButton:hover {
+  background-color: aliceblue;
+  color: #00549e;
+}
+
+h1 {
+  font-family: "Ubuntu", sans-serif;
+  opacity: 0.7;
+}
+
+h2 {
+  font-family: "Ubuntu", sans-serif;
+  opacity: 0.7;
+}
+
+.weatherToday {
+  min-width: 300px;
+}
+
+.rainWind {
+  padding-top: 20px;
+}
+
+.rainWind p {
+  font-size: 15px;
+  padding: 0;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.cityName {
+  font-size: 30px;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.cityText {
+  font-size: 20px;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.forecastRow {
+  padding-top: 25px;
+}
+
+.forecastTemp {
+  text-align: center;
+}
+
+.forecastDay img {
+  height: 70px;
+  width: 70px;
+  min-height: 40px;
+  min-width: 40px;
+  display: block;
+  margin: 0 auto;
+}
+
+.forecastDay p {
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.forecastTemp {
+  padding-top: 15px;
+}
+
+.sup {
+  font-size: 50%;
+  padding-left: 5px;
+}
+
+.currentCity {
+  padding-left: 15% !important;
+}

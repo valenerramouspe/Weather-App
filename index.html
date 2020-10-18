@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather App</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel = "script" href="src/index.js" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400&family=Ubuntu:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <form class="searchBar" id = "search-bar">
+        <input class="insertCity" id = "insert-city" type="text" placeholder="Insert city" />
+        <input class="searchButton" type="submit" value="Search" />
+        <input class="currentButton" value="Current" />
+      </form>
+      <div class="header row">
+        <div class="weatherToday col-5 row">
+          <img
+            class="todayIcon col-6"
+            src="https://www.iconfinder.com/data/icons/weather-forecast-meteorology-color-1/128/weather-sunny-512.png"
+          />
+          <div class="col-6">
+            <h1>
+              <span id="temperature-now">29C°</span><sup class="sup"><a href="#" id="celsius">C°</a>|<a id ="fahrenheit" href="#">F°</a></sup>
+            </h1>
+            <h2 id = "displayed-weather">
+              Sunny
+            </h2>
+          </div>
+          <div class="rainWind col-12">
+            <p class="col-12" id = "humidity">Humidity: 52%</p>
+            <p class="col-12" id = "wind">Wind: 32 km/h</p>
+          </div>
+        </div>
+
+        <div class="currentCity col-7">
+          <p class="cityName col-12" id = "city-name"> Buenos Aires</p>
+          <p class="cityText col-12" id = "today-date"></p>
+          <p class="cityText col-12" id = "today-time"></p>
+        </div>
+      </div>
+      <div class="forecastRow row">
+        <div class="forecastDay col">
+          <p>Tomorrow</p>
+          <img src="src/images/cloudy.png" />
+          <p class="forecastTemp">12-14</p>
+        </div>
+        <div class="forecastDay col">
+          <p>Friday</p>
+          <img src="src/images/foggy.png" />
+          <p class="forecastTemp">16-20</p>
+        </div>
+        <div class="forecastDay col">
+          <p>Saturday</p>
+          <img src="src/images/rainy.png" />
+          <p class="forecastTemp">11-18</p>
+        </div>
+        <div class="forecastDay col">
+          <p>Sunday</p>
+          <img src="src/images/stormy.png" />
+          <p class="forecastTemp">9-14</p>
+        </div>
+        <div class="forecastDay col">
+          <p>Monday</p>
+          <img src="src/images/partlyCloudy.png" />
+          <p class="forecastTemp">15-23</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
