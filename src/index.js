@@ -34,8 +34,9 @@ let months = [
 let weekdayToday = weekdays[now.getDay()];
 let monthToday = months[now.getMonth()];
 let dateToday = now.getDate();
-let hoursToday = now.getHours();
-let minutesToday = now.getMinutes();
+let hoursToday = now.getHours() < 10 ? `0${now.getHours()}` : now.getHours();
+let minutesToday =
+  now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes();
 
 let apiKey = "e6199950e553c8bb69a0156aea95bccb";
 
@@ -69,8 +70,12 @@ function displayCityInfo(response) {
   let weekdayCity = weekdays[cityDate.getDay()];
   let monthCity = months[cityDate.getMonth()];
   let dateCity = cityDate.getDate();
-  let hoursCity = cityDate.getHours();
-  let minutesCity = cityDate.getMinutes();
+  let hoursCity =
+    cityDate.getHours() < 10 ? `0${cityDate.getHours()}` : cityDate.getHours();
+  let minutesCity =
+    cityDate.getMinutes() < 10
+      ? `0${cityDate.getMinutes()}`
+      : cityDate.getMinutes();
   city.innerHTML = `${response.data.name}`;
   todayDateInfo.innerHTML = `${weekdayCity} ${monthCity} ${dateCity}`;
   todayTime.innerHTML = `${hoursCity} : ${minutesCity}`;
@@ -91,7 +96,7 @@ function displayCityInfo(response) {
   }
 }
 
-function getCoordinates(position) 
+function getCoordinates(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   axios
