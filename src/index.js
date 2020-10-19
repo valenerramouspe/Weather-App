@@ -116,6 +116,18 @@ function showCurrentData(response) {
   wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed * 3.6)} Km/h`;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   displayedWeather.innerHTML = `${response.data.weather[0].main}`;
+  celsiusLink.addEventListener("click", getCelsius);
+  fahrenheitLink.addEventListener("click", getFahrenheit);
+  function getCelsius(event) {
+    event.preventDefault();
+    temperatureNow.innerHTML = `${Math.round(response.data.main.temp)}C°`;
+  }
+  function getFahrenheit(event) {
+    event.preventDefault();
+    temperatureNow.innerHTML = `${Math.round(
+      (response.data.main.temp * 9) / 5 + 32
+    )}F°`;
+  }
 }
 
 function getLocation() {
