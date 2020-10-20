@@ -1,6 +1,7 @@
 let todayDateInfo = document.querySelector("#today-date");
 let todayTime = document.querySelector("#today-time");
 let displayedWeather = document.querySelector("#displayed-weather");
+let todayIcon = document.querySelector("#today-icon");
 let wind = document.querySelector("#wind");
 let humidity = document.querySelector("#humidity");
 let city = document.querySelector("#city-name");
@@ -76,14 +77,16 @@ function displayCityInfo(response) {
     cityDate.getMinutes() < 10
       ? `0${cityDate.getMinutes()}`
       : cityDate.getMinutes();
+  let icon = response.data.weather[0].icon;
   celsiusTemp = Math.round(response.data.main.temp);
   city.innerHTML = `${response.data.name}`;
   todayDateInfo.innerHTML = `${weekdayCity} ${monthCity} ${dateCity}`;
   todayTime.innerHTML = `${hoursCity} : ${minutesCity}`;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed * 3.6)} Km/h`;
-  displayedWeather.innerHTML = `${response.data.weather[0].main}`;
+  displayedWeather.innerHTML = `${response.data.weather[0].description}`;
   temperatureNow.innerHTML = `${celsiusTemp}C°`;
+  todayIcon.setAttribute("src", `http://openweathermap.org/img/w/${icon}.png`);
 }
 
 function getCoordinates(position) {
@@ -98,6 +101,7 @@ function getCoordinates(position) {
 
 function showCurrentData(response) {
   let name = response.data.name;
+  let icon = response.data.weather[0].icon;
   celsiusTemp = Math.round(response.data.main.temp);
   console.log(response.data);
   city.innerHTML = `${name}`;
@@ -106,7 +110,8 @@ function showCurrentData(response) {
   temperatureNow.innerHTML = `${celsiusTemp}C°`;
   wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed * 3.6)} Km/h`;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
-  displayedWeather.innerHTML = `${response.data.weather[0].main}`;
+  displayedWeather.innerHTML = `${response.data.weather[0].description}`;
+  todayIcon.setAttribute("src", `http://openweathermap.org/img/w/${icon}.png`);
 }
 
 function getCelsius(event) {
