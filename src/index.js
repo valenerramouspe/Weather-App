@@ -76,24 +76,14 @@ function displayCityInfo(response) {
     cityDate.getMinutes() < 10
       ? `0${cityDate.getMinutes()}`
       : cityDate.getMinutes();
+  celsiusTemp = Math.round(response.data.main.temp);
   city.innerHTML = `${response.data.name}`;
   todayDateInfo.innerHTML = `${weekdayCity} ${monthCity} ${dateCity}`;
   todayTime.innerHTML = `${hoursCity} : ${minutesCity}`;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed * 3.6)} Km/h`;
   displayedWeather.innerHTML = `${response.data.weather[0].main}`;
-  let tempCity = Math.round(response.data.main.temp);
-  temperatureNow.innerHTML = `${tempCity}C°`;
-  celsiusLink.addEventListener("click", getCelsius);
-  fahrenheitLink.addEventListener("click", getFahrenheit);
-  function getCelsius(event) {
-    event.preventDefault();
-    temperatureNow.innerHTML = `${tempCity}C°`;
-  }
-  function getFahrenheit(event) {
-    event.preventDefault();
-    temperatureNow.innerHTML = `${Math.round((tempCity * 9) / 5 + 32)}F°`;
-  }
+  temperatureNow.innerHTML = `${celsiusTemp}C°`;
 }
 
 function getCoordinates(position) {
@@ -108,26 +98,28 @@ function getCoordinates(position) {
 
 function showCurrentData(response) {
   let name = response.data.name;
+  celsiusTemp = Math.round(response.data.main.temp);
   console.log(response.data);
   city.innerHTML = `${name}`;
   todayDateInfo.innerHTML = `${weekdayToday} ${monthToday} ${dateToday}`;
   todayTime.innerHTML = `${hoursToday} : ${minutesToday}`;
-  temperatureNow.innerHTML = `${Math.round(response.data.main.temp)}C°`;
+  temperatureNow.innerHTML = `${celsiusTemp}C°`;
   wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed * 3.6)} Km/h`;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   displayedWeather.innerHTML = `${response.data.weather[0].main}`;
-  celsiusLink.addEventListener("click", getCelsius);
-  fahrenheitLink.addEventListener("click", getFahrenheit);
-  function getCelsius(event) {
-    event.preventDefault();
-    temperatureNow.innerHTML = `${Math.round(response.data.main.temp)}C°`;
-  }
-  function getFahrenheit(event) {
-    event.preventDefault();
-    temperatureNow.innerHTML = `${Math.round(
-      (response.data.main.temp * 9) / 5 + 32
-    )}F°`;
-  }
+}
+
+function getCelsius(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  temperatureNow.innerHTML = `${Math.round(celsiusTemp)}C°`;
+}
+function getFahrenheit(event) {
+  event.preventDefault();
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+  temperatureNow.innerHTML = `${Math.round((celsiusTemp * 9) / 5 + 32)}F°`;
 }
 
 function getLocation() {
@@ -139,5 +131,12 @@ searchBar.addEventListener("submit", getWeatherInfo);
 currentButton.addEventListener("click", getLocation);
 
 let celsiusLink = document.querySelector("#celsius");
+
 let fahrenheitLink = document.querySelector("#fahrenheit");
+
+celsiusLink.addEventListener("click", getCelsius);
+fahrenheitLink.addEventListener("click", getFahrenheit);
+
 let temperatureNow = document.querySelector("#temperature-now");
+
+let celsiusTemp = "29";

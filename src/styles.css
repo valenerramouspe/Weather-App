@@ -122,3 +122,13 @@ h2 {
 .linkToGit {
   margin-left: 9%;
 }
+
+sup .active {
+  color: black;
+}
+
+sup .active:hover {
+  cursor: default;
+  text-decoration: none;
+  color: black;
+}
