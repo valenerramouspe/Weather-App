@@ -80,6 +80,8 @@ function displayCityInfo(response) {
       ? `0${cityDate.getMinutes()}`
       : cityDate.getMinutes();
   let icon = response.data.weather[0].icon;
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   celsiusTemp = Math.round(response.data.main.temp);
   city.innerHTML = `${response.data.name}`;
   todayDateInfo.innerHTML = `${weekdayCity} ${monthCity} ${dateCity}`;
@@ -109,6 +111,8 @@ function getCoordinates(position) {
 function showCurrentData(response) {
   let name = response.data.name;
   let icon = response.data.weather[0].icon;
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   celsiusTemp = Math.round(response.data.main.temp);
   city.innerHTML = `${name}`;
   todayDateInfo.innerHTML = `${weekdayToday} ${monthToday} ${dateToday}`;
@@ -171,4 +175,4 @@ fahrenheitLink.addEventListener("click", getFahrenheit);
 
 let temperatureNow = document.querySelector("#temperature-now");
 
-let celsiusTemp = "29";
+let celsiusTemp = null;
