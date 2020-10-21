@@ -56,7 +56,7 @@ let localTime = d.getTime();
 let localOffset = d.getTimezoneOffset() * 60000;
 let utc = localTime + localOffset;
 
-//getLocation();
+getLocation();
 
 function getWeatherInfo(event) {
   event.preventDefault();
@@ -68,7 +68,6 @@ function getWeatherInfo(event) {
 }
 
 function displayCityInfo(response) {
-  console.log(response.data);
   let offset = utc + response.data.timezone * 1000;
   let cityDate = new Date(offset);
   let weekdayCity = weekdays[cityDate.getDay()];
@@ -89,7 +88,7 @@ function displayCityInfo(response) {
   wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed * 3.6)} Km/h`;
   displayedWeather.innerHTML = `${response.data.weather[0].description}`;
   temperatureNow.innerHTML = `${celsiusTemp}C°`;
-  todayIcon.setAttribute("src", `http://openweathermap.org/img/w/${icon}.png`);
+  todayIcon.setAttribute("src", `https://openweathermap.org/img/w/${icon}.png`);
   axios
     .get(
       `https://api.openweathermap.org/data/2.5/forecast/daily?q=${response.data.name}&cnt=5&appid=${apiKey}&units=metric`
@@ -111,7 +110,6 @@ function showCurrentData(response) {
   let name = response.data.name;
   let icon = response.data.weather[0].icon;
   celsiusTemp = Math.round(response.data.main.temp);
-  console.log(response.data);
   city.innerHTML = `${name}`;
   todayDateInfo.innerHTML = `${weekdayToday} ${monthToday} ${dateToday}`;
   todayTime.innerHTML = `${hoursToday} : ${minutesToday}`;
@@ -119,7 +117,7 @@ function showCurrentData(response) {
   wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed * 3.6)} Km/h`;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   displayedWeather.innerHTML = `${response.data.weather[0].description}`;
-  todayIcon.setAttribute("src", `http://openweathermap.org/img/w/${icon}.png`);
+  todayIcon.setAttribute("src", `https://openweathermap.org/img/w/${icon}.png`);
   axios
     .get(
       `https://api.openweathermap.org/data/2.5/forecast/daily?q=${name}&cnt=5&appid=${apiKey}&units=metric`
@@ -145,14 +143,12 @@ function getLocation() {
 }
 
 function showForecast(response) {
-  console.log(response.data.list);
   forecastRow.innerHTML = null;
   for (let i = 0; i < 5; i++) {
     let list = response.data.list;
-    console.log(list[i].humidity);
     forecastRow.innerHTML += `<div class="forecastDay col">
           <p>${weekdays[new Date(list[i].dt * 1000).getDay()]}</p>
-          <img src="http://openweathermap.org/img/w/${
+          <img src="https://openweathermap.org/img/w/${
             list[i].weather[0].icon
           }.png" />
           <p class="forecastTemp">${Math.round(list[i].temp.min)}°-${Math.round(
