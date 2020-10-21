@@ -1,7 +1,13 @@
+.superContainer {
+  max-width: 750px !important;
+  display: block;
+  margin: 0 auto;
+}
+
 .container {
   border: 5px solid #214b5e;
   border-radius: 20px;
-  background-color: #e3f4fc;
+  background-color: #d2d2d2;
 }
 
 .searchBar {
@@ -65,12 +71,17 @@ h2 {
   min-width: 300px;
 }
 
+.weatherToday img {
+  max-height: 50%;
+}
+
 .rainWind {
   padding-top: 20px;
+  padding-left: 12% !important;
 }
 
 .rainWind p {
-  font-size: 15px;
+  font-size: 18px;
   padding: 0;
   font-family: "Fira Sans", sans-serif;
 }
@@ -118,10 +129,6 @@ h2 {
 
 .currentCity {
   padding-left: 15% !important;
-}
-
-.linkToGit {
-  margin-left: 9%;
 }
 
 sup .active {

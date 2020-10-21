@@ -5,6 +5,7 @@ let todayIcon = document.querySelector("#today-icon");
 let wind = document.querySelector("#wind");
 let humidity = document.querySelector("#humidity");
 let city = document.querySelector("#city-name");
+let forecastRow = document.querySelector("#forecast-row");
 
 let now = new Date();
 
@@ -55,6 +56,8 @@ let localTime = d.getTime();
 let localOffset = d.getTimezoneOffset() * 60000;
 let utc = localTime + localOffset;
 
+//getLocation();
+
 function getWeatherInfo(event) {
   event.preventDefault();
   axios
@@ -87,6 +90,11 @@ function displayCityInfo(response) {
   displayedWeather.innerHTML = `${response.data.weather[0].description}`;
   temperatureNow.innerHTML = `${celsiusTemp}C°`;
   todayIcon.setAttribute("src", `http://openweathermap.org/img/w/${icon}.png`);
+  axios
+    .get(
+      `https://api.openweathermap.org/data/2.5/forecast/daily?q=${response.data.name}&cnt=5&appid=${apiKey}&units=metric`
+    )
+    .then(showForecast);
 }
 
 function getCoordinates(position) {
@@ -112,6 +120,11 @@ function showCurrentData(response) {
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   displayedWeather.innerHTML = `${response.data.weather[0].description}`;
   todayIcon.setAttribute("src", `http://openweathermap.org/img/w/${icon}.png`);
+  axios
+    .get(
+      `https://api.openweathermap.org/data/2.5/forecast/daily?q=${name}&cnt=5&appid=${apiKey}&units=metric`
+    )
+    .then(showForecast);
 }
 
 function getCelsius(event) {
@@ -129,6 +142,24 @@ function getFahrenheit(event) {
 
 function getLocation() {
   navigator.geolocation.getCurrentPosition(getCoordinates);
+}
+
+function showForecast(response) {
+  console.log(response.data.list);
+  forecastRow.innerHTML = null;
+  for (let i = 0; i < 5; i++) {
+    let list = response.data.list;
+    console.log(list[i].humidity);
+    forecastRow.innerHTML += `<div class="forecastDay col">
+          <p>${weekdays[new Date(list[i].dt * 1000).getDay()]}</p>
+          <img src="http://openweathermap.org/img/w/${
+            list[i].weather[0].icon
+          }.png" />
+          <p class="forecastTemp">${Math.round(list[i].temp.min)}°-${Math.round(
+      list[i].temp.max
+    )}°</p>
+      </div>`;
+  }
 }
 
 searchBar.addEventListener("submit", getWeatherInfo);

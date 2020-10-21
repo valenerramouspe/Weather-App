@@ -20,6 +20,7 @@
   </head>
 
   <body>
+    <div class="superContainer">
     <div class="container">
       <form class="searchBar" id = "search-bar">
         <input class="insertCity" id = "insert-city" type="text" placeholder="Insert city" />
@@ -31,19 +32,19 @@
           <img
             id="today-icon"
             class="todayIcon col-6"
-            src="https://www.iconfinder.com/data/icons/weather-forecast-meteorology-color-1/128/weather-sunny-512.png"
+            src="http://openweathermap.org/img/w/10d.png"
           />
           <div class="col-6">
             <h1>
               <span id="temperature-now">29C°</span><sup class="sup"><a href="#" id="celsius" class="active">C°</a>|<a id ="fahrenheit" href="#">F°</a></sup>
             </h1>
             <h2 id = "displayed-weather">
-              Sunny
+              Rain
             </h2>
           </div>
           <div class="rainWind col-12">
-            <p class="col-12" id = "humidity">Humidity: 52%</p>
-            <p class="col-12" id = "wind">Wind: 32 km/h</p>
+            <p class="col-12" id = "humidity">Humidity: 82%</p>
+            <p class="col-12" id = "wind">Wind: 24 km/h</p>
           </div>
         </div>
 
@@ -53,38 +54,39 @@
           <p class="cityText col-12" id = "today-time"></p>
         </div>
       </div>
-      <div class="forecastRow row">
+      <div id = "forecast-row" class="forecastRow row">
         <div class="forecastDay col">
           <p>Tomorrow</p>
-          <img src="src/images/cloudy.png" />
+          <img src="http://openweathermap.org/img/w/01d.png" />
           <p class="forecastTemp">12-14</p>
         </div>
         <div class="forecastDay col">
           <p>Friday</p>
-          <img src="src/images/foggy.png" />
+          <img src="http://openweathermap.org/img/w/03d.png" />
           <p class="forecastTemp">16-20</p>
         </div>
         <div class="forecastDay col">
           <p>Saturday</p>
-          <img src="src/images/rainy.png" />
+          <img src="http://openweathermap.org/img/w/11d.png" />
           <p class="forecastTemp">11-18</p>
         </div>
         <div class="forecastDay col">
           <p>Sunday</p>
-          <img src="src/images/stormy.png" />
+          <img src="http://openweathermap.org/img/w/02d.png" />
           <p class="forecastTemp">9-14</p>
         </div>
         <div class="forecastDay col">
           <p>Monday</p>
-          <img src="src/images/partlyCloudy.png" />
+          <img src="http://openweathermap.org/img/w/13d.png" />
           <p class="forecastTemp">15-23</p>
         </div>
       </div>
+      </div>
+      <span class="linkToGit">
+        <a href="https://github.com/valenerramouspe/Weather-App" target="_blank">Open source code</a>
+        by Valentina Erramouspe
+      </span>
     </div>
-    <span class="linkToGit">
-      <a href="https://github.com/valenerramouspe/Weather-App" target="_blank">Open source code</a> 
-      by Valentina Erramouspe
-    </span>
     <script src="src/index.js"></script>
   </body>
 </html>
